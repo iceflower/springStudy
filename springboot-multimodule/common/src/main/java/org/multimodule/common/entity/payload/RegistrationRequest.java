@@ -1,34 +1,33 @@
 package org.multimodule.common.entity.payload;
 
-//import com.accolite.pru.health.AuthApp.validation.annotation.NullOrNotBlank;
-//import io.swagger.annotations.ApiModel;
-//import io.swagger.annotations.ApiModelProperty;
-
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
-import org.multimodule.common.validation.annotation.NullOrNotBlank;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 
-// @ApiModel(value = "Registration Request", description = "The registration request payload")
+@ApiModel(value = "회원 등록 요청", description = "회원 등록 요청payload")
 public class RegistrationRequest {
 
-    @NullOrNotBlank(message = "Registration username can be null but not blank")
-//    @ApiModelProperty(value = "A valid username", allowableValues = "NonEmpty String")
+	@NotNull(message = "성함은 필수적으로 입력하셔야 합니다.")
+	@NotBlank(message = "성함은 필수적으로 입력하셔야 합니다.")
+    @ApiModelProperty(value = "A valid username", allowableValues = "문자열(NonEmpty)")
     private String username;
 
-    @NullOrNotBlank(message = "Registration email can be null but not blank")
-//    @ApiModelProperty(value = "A valid email", required = true, allowableValues = "NonEmpty String")
+	@NotNull(message = "이메일은 필수적으로 입력하셔야 합니다.")
+	@NotBlank(message = "이메일은 필수적으로 입력하셔야 합니다.")
+    @ApiModelProperty(value = "유효한 이메일", required = true, allowableValues = "문자열(NonEmpty)")
     private String email;
 
-    @NotNull(message = "Registration password cannot be null")
-//    @ApiModelProperty(value = "A valid password string", required = true, allowableValues = "NonEmpty String")
+    @NotNull(message = "등록자 성함은 필수적으로 입력하셔야 합니다.")
+    @ApiModelProperty(value = "A valid password string", required = true, allowableValues = "문자열(NonEmpty)")
     private String password;
 
-    @NotNull(message = "Specify whether the user has to be registered as an admin or not")
-//    @ApiModelProperty(value = "Flag denoting whether the user is an admin or not", required = true, dataType = "boolean", allowableValues = "true, false")
+    @NotNull(message = "관리자 등록 유무 정보가 존재하지 않습니다.")
+    @ApiModelProperty(value = "관리자 등록 유무 flag", required = true, dataType = "boolean", allowableValues = "true, false")
     private Boolean registerAsAdmin;
 
-    public RegistrationRequest(String username, String email,
-                               String password, Boolean registerAsAdmin) {
+    public RegistrationRequest(String username, String email, String password, Boolean registerAsAdmin) {
         this.username = username;
         this.email = email;
         this.password = password;

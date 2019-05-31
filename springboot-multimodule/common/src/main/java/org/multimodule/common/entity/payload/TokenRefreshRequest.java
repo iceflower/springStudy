@@ -1,15 +1,16 @@
 package org.multimodule.common.entity.payload;
-
-//import io.swagger.annotations.ApiModel;
-//import io.swagger.annotations.ApiModelProperty;
-
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
-//@ApiModel(value = "Token refresh Request", description = "The jwt token refresh request payload")
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
+@ApiModel(value = "JWT 리프레시 토큰 요청", description = "JWT 리프레시 토큰 payload")
 public class TokenRefreshRequest {
 
-    @NotBlank(message = "Refresh token cannot be blank")
-    // @ApiModelProperty(value = "Valid refresh token passed during earlier successful authentications", required = true, allowableValues = "NonEmpty String")
+    @NotBlank(message = "리프레시 토큰이 존재하지 않습니다.")
+    @NotNull(message = "리프레시 토큰이 존재하지 않습니다.")
+    @ApiModelProperty(value = "성공한 인증 전에 받은 유효한 리프레시 토큰", required = true, allowableValues = "문자열(NonEmpty)")
     private String refreshToken;
 
     public TokenRefreshRequest(String refreshToken) {

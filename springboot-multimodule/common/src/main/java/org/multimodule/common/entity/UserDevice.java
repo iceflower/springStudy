@@ -1,8 +1,5 @@
 package org.multimodule.common.entity;
 
-//import com.accolite.pru.health.AuthApp.model.audit.DateAudit;
-//import com.accolite.pru.health.AuthApp.model.token.RefreshToken;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;

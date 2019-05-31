@@ -1,17 +1,17 @@
 package org.multimodule.common.entity.payload;
 
-//import io.swagger.annotations.ApiModel;
-//import io.swagger.annotations.ApiModelProperty;
-
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
-// @ApiModel(value = "Logout request", description = "The logout request payload")
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
+@ApiModel(value = "로그아웃 요청", description = "로그아웃 요청 payload")
 public class LogOutRequest {
 
     @Valid
-    @NotNull(message = "Device info cannot be null")
-    // @ApiModelProperty(value = "Device info", required = true, dataType = "object", allowableValues = "A valid deviceInfo object")
+    @NotNull(message = "디바이스 정보가 존재하지 않습니다.")
+    @ApiModelProperty(value = "디바이스 정보", required = true, dataType = "객체", allowableValues = "유효한 디바이스 정보 객체")
     private DeviceInfo deviceInfo;
 
     public LogOutRequest() {

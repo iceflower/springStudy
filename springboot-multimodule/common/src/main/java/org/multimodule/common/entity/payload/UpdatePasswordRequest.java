@@ -1,19 +1,22 @@
 package org.multimodule.common.entity.payload;
 
-//import io.swagger.annotations.ApiModel;
-//import io.swagger.annotations.ApiModelProperty;
 
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
-//@ApiModel(value = "Update password Request", description = "The update password request payload")
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
+@ApiModel(value = "비밀번호 수정 요청", description = "비밀번호 수정 요청 payload")
 public class UpdatePasswordRequest {
 
-    @NotBlank(message = "Old password must not be blank")
-    // @ApiModelProperty(value = "Valid current user password", required = true, allowableValues = "NonEmpty String")
+	@NotNull(message = "기존 비밀번호 정보를 찾을 수 없습니다.")
+    @NotBlank(message = "기존 비밀번호 정보를 찾을 수 없습니다.")
+    @ApiModelProperty(value = "유효한 현재 사용자 비밀번호", required = true, allowableValues = "문자열(NonEmpty)")
     private String oldPassword;
 
-    @NotBlank(message = "New password must not be blank")
-    // @ApiModelProperty(value = "Valid new password string", required = true, allowableValues = "NonEmpty String")
+    @NotBlank(message = "새로운 비밀번호를 찾을 수 없습니다.")
+    @ApiModelProperty(value = "유효한 새로운 비밀번호", required = true, allowableValues = "문자열(NonEmpty)")
     private String newPassword;
 
     public UpdatePasswordRequest(String oldPassword, String newPassword) {

@@ -1,27 +1,25 @@
 package org.multimodule.common.entity.payload;
-
-// import com.accolite.pru.health.AuthApp.validation.annotation.MatchPassword;
-//import io.swagger.annotations.ApiModel;
-//import io.swagger.annotations.ApiModelProperty;
-
 import javax.validation.constraints.NotBlank;
 
 import org.multimodule.common.validation.annotation.MatchPassword;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
 @MatchPassword
-//@ApiModel(value = "Password reset Request", description = "The password reset request payload")
+@ApiModel(value = "비밀번호 초기화 요청", description = "비밀번호 초기화 요청 payload")
 public class PasswordResetRequest {
 
-    @NotBlank(message = "Password cannot be blank")
-    // @ApiModelProperty(value = "New user password", required = true, allowableValues = "NonEmpty String")
+    @NotBlank(message = "신규입력 비밀번호 정보를 찾을 수 없습니다.")
+    @ApiModelProperty(value = "사용자가 새롭게 입력한 비밀번호", required = true, allowableValues = "문자열(NonEmpty)")
     private String password;
 
-    @NotBlank(message = "Confirm Password cannot be blank")
-    // @ApiModelProperty(value = "Must match the new user password. Else exception will be thrown", required = true, allowableValues = "NonEmpty String matching the password")
+    @NotBlank(message = "재입력 비밀번호 정보를 찾을 수 없습니다.")
+    @ApiModelProperty(value = "신규입력 비밀번호 정보와 같아야 한다. 그렇지 않으면 예외가 발생한다.", required = true, allowableValues = "문자열(NonEmpty, 신규입력 비밀번호와 일치)")
     private String confirmPassword;
 
-    @NotBlank(message = "Token has to be supplied along with a password reset request")
-    // @ApiModelProperty(value = "Reset token received in mail", required = true, allowableValues = "NonEmpty String")
+    @NotBlank(message = "비밀번호 초기화 링크 요청시 제공한 토큰")
+    @ApiModelProperty(value = "이메일 전송시 받은 초기화 토큰", required = true, allowableValues = "문자열(NonEmpty)")
     private String token;
 
     public PasswordResetRequest() {

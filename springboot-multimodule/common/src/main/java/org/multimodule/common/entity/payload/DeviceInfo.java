@@ -6,23 +6,20 @@ import javax.validation.constraints.NotNull;
 import org.multimodule.common.constant.DeviceType;
 import org.multimodule.common.validation.annotation.NullOrNotBlank;
 
-
-// import com.accolite.pru.health.AuthApp.model.DeviceType;
-
-// import io.swagger.annotations.ApiModelProperty;
+import io.swagger.annotations.ApiModelProperty;
 
 public class DeviceInfo {
 
-    @NotBlank(message = "Device id cannot be blank")
-   //  @ApiModelProperty(value = "Device Id", required = true, dataType = "string", allowableValues = "Non empty string")
+    @NotBlank(message = "deviceId가 존재하지 않습니다. (NotBlank)")
+    @ApiModelProperty(value = "디바이스ID", required = true, dataType = "문자열", allowableValues = "문자열(Not Empty)")
     private String deviceId;
 
-    @NotNull(message = "Device type cannot be null")
-    // @ApiModelProperty(value = "Device type Android/iOS", required = true, dataType = "string", allowableValues = "DEVICE_TYPE_ANDROID, DEVICE_TYPE_IOS")
+    @NotNull(message = "deviceType이 존재하지 않습니다. (NotNull)")
+    @ApiModelProperty(value = "디바이스 타입 (Android/iOS)", required = true, dataType = "문자열", allowableValues = "DEVICE_TYPE_ANDROID, DEVICE_TYPE_IOS")
     private DeviceType deviceType;
 
-    @NullOrNotBlank(message = "Device notification token can be null but not blank")
-    // @ApiModelProperty(value = "Device notification id", dataType = "string", allowableValues = "Non empty string")
+    @NullOrNotBlank(message = "디바이스 notification 는 null은 허용되지만 빈칸(empty space)은 허용되지 않습니다.")
+    @ApiModelProperty(value = "Device notification id", dataType = "string", allowableValues = "문자열(Non empty)")
     private String notificationToken;
 
     public DeviceInfo() {
