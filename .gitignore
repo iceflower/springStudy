@@ -132,3 +132,4 @@ modules.xml
 
 # Sonarlint plugin
 .idea/sonarlint
+springboot-multimodule/auth-api/target/classes/templates/reset-link.ftl,springboot-multimodule/auth-api/target/classes/templates/email-verification.ftl,springboot-multimodule/auth-api/target/classes/templates/account-activity-change.ftl,springboot-multimodule/auth-api/target/classes/mail.properties,springboot-multimodule/auth-api/target/classes/log4j.properties,springboot-multimodule/auth-api/target/classes/data.sql,springboot-multimodule/auth-api/target/classes/application.properties,springboot-multimodule/auth-api/target/classes/META-INF/maven/org.multimodule.api.auth/auth-api/pom.xml,springboot-multimodule/auth-api/target/classes/META-INF/maven/org.multimodule.api.auth/auth-api/pom.properties
