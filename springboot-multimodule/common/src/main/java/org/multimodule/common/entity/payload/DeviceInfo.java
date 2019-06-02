@@ -10,8 +10,8 @@ import io.swagger.annotations.ApiModelProperty;
 
 public class DeviceInfo {
 
-    @NotBlank(message = "deviceId가 존재하지 않습니다. (NotBlank)")
-    @ApiModelProperty(value = "디바이스ID", required = true, dataType = "문자열", allowableValues = "문자열(Not Empty)")
+    @NotBlank(message = "디바이스ID가 존재하지 않습니다. (NotBlank)")
+    @ApiModelProperty(value = "디바이스ID(uuid)", required = true, dataType = "문자열", allowableValues = "문자열(Not Empty)")
     private String deviceId;
 
     @NotNull(message = "deviceType이 존재하지 않습니다. (NotNull)")

@@ -24,7 +24,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 
 @Profile("!dev")
 @Configuration
-@EnableWebSecurity(debug = true)
+@EnableWebSecurity(debug = false)
 @EnableJpaRepositories(basePackages = "org.multimodule.common.repository")
 @EntityScan(basePackages = {"org.multimodule.common.entity"})
 @EnableGlobalMethodSecurity(

@@ -213,8 +213,7 @@ public class AuthController {
      * and return a new token to the caller
      */
     @PostMapping("/refresh")
-    @ApiOperation(value = "Refresh the expired jwt authentication by issuing a token refresh request and returns the" +
-            "updated response tokens")
+    @ApiOperation(value = "만료된 인증 토큰을 새롭게 발급해서 리턴해주는 API")
     public ResponseEntity<?> refreshJwtToken(@ApiParam(value = "The TokenRefreshRequest payload") @Valid @RequestBody TokenRefreshRequest tokenRefreshRequest) {
 
         return authService.refreshJwtToken(tokenRefreshRequest)
