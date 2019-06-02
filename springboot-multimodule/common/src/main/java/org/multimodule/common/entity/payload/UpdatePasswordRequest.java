@@ -42,4 +42,15 @@ public class UpdatePasswordRequest {
     public void setNewPassword(String newPassword) {
         this.newPassword = newPassword;
     }
+
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("UpdatePasswordRequest [oldPassword=");
+		builder.append(oldPassword);
+		builder.append(", newPassword=");
+		builder.append(newPassword);
+		builder.append("]");
+		return builder.toString();
+	}
 }

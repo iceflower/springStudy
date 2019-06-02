@@ -29,4 +29,14 @@ public class ApiResponse {
 		this.success = success;
 	}
 
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("ApiResponse [data=");
+		builder.append(data);
+		builder.append(", success=");
+		builder.append(success);
+		builder.append("]");
+		return builder.toString();
+	}
 }

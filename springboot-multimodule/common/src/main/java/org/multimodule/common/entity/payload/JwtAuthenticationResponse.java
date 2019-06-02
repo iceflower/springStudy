@@ -3,11 +3,8 @@ package org.multimodule.common.entity.payload;
 public class JwtAuthenticationResponse {
 
     private String accessToken;
-
     private String refreshToken;
-
     private String tokenType;
-
     private Long expiryDuration;
 
     public JwtAuthenticationResponse(String accessToken, String refreshToken, Long expiryDuration) {
@@ -48,4 +45,19 @@ public class JwtAuthenticationResponse {
     public void setExpiryDuration(Long expiryDuration) {
         this.expiryDuration = expiryDuration;
     }
+
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("JwtAuthenticationResponse [accessToken=");
+		builder.append(accessToken);
+		builder.append(", refreshToken=");
+		builder.append(refreshToken);
+		builder.append(", tokenType=");
+		builder.append(tokenType);
+		builder.append(", expiryDuration=");
+		builder.append(expiryDuration);
+		builder.append("]");
+		return builder.toString();
+	}
 }
