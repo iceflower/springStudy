@@ -6,26 +6,6 @@
                 text-indent: -1em;
             }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 </style>
 <![endif]--><!-- Progressive Enhancements -->
 <div style="display: none; font-size: 1px; line-height: 1px; max-height: 0; max-width: 0; opacity: 0; overflow: hidden; mso-hide: all; font-family: sans-serif;">
@@ -54,7 +34,7 @@
                                         <td class="tw-card-header"
                                             style="padding: 5px 5px px; width: 366px; color: #ffff; text-decoration: none; font-family: sans-serif;"
                                             align="center"><span
-                                                style="font-weight: 600;">Email Confirmation Required</span></td>
+                                                style="font-weight: 600;">이메일 인증 요구됨</span></td>
 
                                     </tr>
                                     </tbody>
@@ -67,11 +47,11 @@
                                             style="padding: 20px 35px; text-align: left; color: #6f6f6f; font-family: sans-serif; border-top: 0;">
                                             <h1 class="tw-h1"
                                                 style="font-size: 24px; font-weight: bold; mso-line-height-rule: exactly; line-height: 32px; margin: 0 0 20px; color: #474747;">
-                                                Hello ${userName},</h1>
+                                                안녕하세요 ${userName}님,</h1>
                                             <p class=""
                                                style="margin: 20px 0; font-size: 16px; mso-line-height-rule: exactly; line-height: 24px;">
-                                            <span style="font-weight: 400;">Thank you for joining <strong>Customer Engagement App</strong>, an efficient and smart solution to manage your health!</span><br/><br/><span
-                                                style="font-weight: 400;">To complete the registration process, please confirm your email address to activate your account</span>
+                                            <span style="font-weight: 400;">저희 <strong>끝내주는 서비스 앱</strong>에 참여해주셔서 감사합니다.</span><br/><br/><span
+                                                style="font-weight: 400;">계정 등록 절차를 마무리하기 위해, 회원 등록시 기입해주신 이메일 주로로 발송된 인증메일을 확인해 주세요.</span>
                                             <table style="border: 0; width: 100%;" cellspacing="0" cellpadding="0">
                                                 <tbody>
                                                 <tr>
@@ -90,8 +70,7 @@
                                                                             style="border-radius: 4px; color: #ffffff; display: block; font-family: sans-serif; font-size: 18px; font-weight: bold; mso-height-rule: exactly; line-height: 1.1; padding: 14px 18px; text-decoration: none; text-transform: none; border: 0;"
                                                                             href="${userEmailTokenVerificationLink}"
                                                                             target="_blank"
-                                                                            rel="noopener">Confirm
-                                                                        email</a> <!--![endif]--></td>
+                                                                            rel="noopener">이메일 인증하기</a> <!--![endif]--></td>
                                                             </tr>
                                                             </tbody>
                                                         </table>
@@ -105,13 +84,13 @@
                                             </div>
                                             <p class=""
                                                style="margin: 20px 0; font-size: 16px; mso-line-height-rule: exactly; line-height: 24px;">
-                                                Contact our support team if you have any questions or concerns.&nbsp;<a
+                                               문의사항이나 문제 발생시 지원팀으로 문의 부탁드립니다.&nbsp;<a
                                                     style="color: #316fea; text-decoration: none;"
                                                     href="javascript:void(0);" target="_blank" rel="noopener">Ask us any
                                                 question</a></p>
                                             <p class="tw-signoff"
                                                style="margin: 45px 0 5px; font-size: 16px; mso-line-height-rule: exactly; line-height: 24px;">
-                                                Our best, <br/> The Customer Engagement App team</p>
+                                                항상 최선을 다 하는, <br/> 끝내주는 서비스 앱</p>
                                         </td>
                                     </tr>
                                     </tbody>

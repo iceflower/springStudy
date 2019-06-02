@@ -15,7 +15,7 @@ public class DeviceInfo {
     private String deviceId;
 
     @NotNull(message = "deviceType이 존재하지 않습니다. (NotNull)")
-    @ApiModelProperty(value = "디바이스 타입 (Android/iOS)", required = true, dataType = "문자열", allowableValues = "DEVICE_TYPE_ANDROID, DEVICE_TYPE_IOS")
+    @ApiModelProperty(value = "디바이스 타입 (Android/iOS)", required = true, dataType = "문자열", allowableValues = "DEVICE_TYPE_ANDROID, DEVICE_TYPE_IOS, DEVICE_TYPE_WEB")
     private DeviceType deviceType;
 
     @NullOrNotBlank(message = "디바이스 notification 는 null은 허용되지만 빈칸(empty space)은 허용되지 않습니다.")

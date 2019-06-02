@@ -4,8 +4,8 @@ import com.fasterxml.jackson.annotation.JsonValue;
 
 public enum DeviceType {
 	DEVICE_TYPE_ANDROID("DEVICE_TYPE_ANDROID"),
-	DEVICE_TYPE_IOS("DEVICE_TYPE_IOS");
-
+	DEVICE_TYPE_IOS("DEVICE_TYPE_IOS"),
+	DEVICE_TYPE_WEB("DEVICE_TYPE_WEB");	
 	@JsonValue
     private final String code;
     

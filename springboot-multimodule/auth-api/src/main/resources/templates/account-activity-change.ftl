@@ -6,28 +6,6 @@
                 text-indent: -1em;
             }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 </style>
 <![endif]--><!-- Progressive Enhancements -->
 <div style="display: none; font-size: 1px; line-height: 1px; max-height: 0; max-width: 0; opacity: 0; overflow: hidden; mso-hide: all; font-family: sans-serif;">
@@ -56,7 +34,7 @@
                                         <td class="tw-card-header"
                                             style="padding: 5px 5px px; width: 366px; color: #ffff; text-decoration: none; font-family: sans-serif;"
                                             align="center"><span
-                                                style="font-weight: 600;">Account Status Changed</span></td>
+                                                style="font-weight: 600;">계정 상태 변경</span></td>
 
                                     </tr>
                                     </tbody>
@@ -69,13 +47,13 @@
                                             style="padding: 20px 35px; text-align: left; color: #6f6f6f; font-family: sans-serif; border-top: 0;">
                                             <h1 class="tw-h1"
                                                 style="font-size: 24px; font-weight: bold; mso-line-height-rule: exactly; line-height: 32px; margin: 0 0 20px; color: #474747;">
-                                                Hello ${userName},</h1>
+                                                안녕하세요 ${userName}님,</h1>
                                             <p class=""
                                                style="margin: 20px 0; font-size: 16px; mso-line-height-rule: exactly; line-height: 24px;">
-                                            <span style="font-weight: 400;">A new activity was initiated on your account.</span>
-                                            <br></br><span style="font-weight: 400;">Action: <strong>${action}</strong></span>
+                                            <span style="font-weight: 400;">귀하의 계정에서 새로운 활동이 감지되었습니다.</span>
+                                            <br></br><span style="font-weight: 400;">활동: <strong>${action}</strong></span>
                                             <br></br><span
-                                                style="font-weight: 400;">Status: <strong>${actionStatus}</strong></span>
+                                                style="font-weight: 400;">상태: <strong>${actionStatus}</strong></span>
 
                                             <div class=""
                                                  style="border-top: 0; font-size: 1px; mso-line-height-rule: exactly; line-height: 1px; max-height: 0; margin: 20px 0; overflow: hidden;">
@@ -83,14 +61,13 @@
                                             </div>
                                             <p class=""
                                                style="margin: 20px 0; font-size: 16px; mso-line-height-rule: exactly; line-height: 24px;">
-                                                Contact our support team if you have any questions or concerns.&nbsp;
+                                               문의사항이나 문제 발생시 지원팀으로 문의 부탁드립니다.&nbsp;
                                                 <br></br><a
                                                     style="color: #316fea; text-decoration: none;"
-                                                    href="javascript:void(0);" target="_blank" rel="noopener">Ask us any
-                                                question</a></p>
+                                                    href="javascript:void(0);" target="_blank" rel="noopener">문제가 발생했나요?</a></p>
                                             <p class="tw-signoff"
                                                style="margin: 45px 0 5px; font-size: 16px; mso-line-height-rule: exactly; line-height: 24px;">
-                                                Our best, <br/> The Customer Engagement App team</p>
+                                                항상 최선을 다하는, <br/> 고객만족팀</p>
                                         </td>
                                     </tr>
                                     </tbody>
