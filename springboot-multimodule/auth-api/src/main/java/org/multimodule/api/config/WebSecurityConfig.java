@@ -5,6 +5,7 @@ import org.multimodule.api.auth.service.CustomUserDetailsService;
 import org.multimodule.api.security.JwtAuthenticationEntryPoint;
 import org.multimodule.api.security.JwtAuthenticationFilter;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
@@ -24,7 +25,8 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @Profile("!dev")
 @Configuration
 @EnableWebSecurity(debug = true)
-@EnableJpaRepositories(basePackages = "com.accolite.pru.health.AuthApp.repository")
+@EnableJpaRepositories(basePackages = "org.multimodule.common.repository")
+@EntityScan(basePackages = {"org.multimodule.common.entity"})
 @EnableGlobalMethodSecurity(
         securedEnabled = true,
         jsr250Enabled = true,

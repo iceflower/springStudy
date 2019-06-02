@@ -11,7 +11,7 @@ public class RegistrationRequest {
 
 	@NotNull(message = "성함은 필수적으로 입력하셔야 합니다.")
 	@NotBlank(message = "성함은 필수적으로 입력하셔야 합니다.")
-    @ApiModelProperty(value = "A valid username", allowableValues = "문자열(NonEmpty)")
+    @ApiModelProperty(value = "유효한 유저명 문자열", allowableValues = "문자열(NonEmpty)")
     private String username;
 
 	@NotNull(message = "이메일은 필수적으로 입력하셔야 합니다.")
@@ -20,7 +20,7 @@ public class RegistrationRequest {
     private String email;
 
     @NotNull(message = "등록자 성함은 필수적으로 입력하셔야 합니다.")
-    @ApiModelProperty(value = "A valid password string", required = true, allowableValues = "문자열(NonEmpty)")
+    @ApiModelProperty(value = "유효한 비밀번호 문자열", required = true, allowableValues = "문자열(NonEmpty)")
     private String password;
 
     @NotNull(message = "관리자 등록 유무 정보가 존재하지 않습니다.")

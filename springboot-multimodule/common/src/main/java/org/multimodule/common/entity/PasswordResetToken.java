@@ -71,4 +71,10 @@ public class PasswordResetToken {
         this.token = token;
     }
 
+	@Override
+	public String toString() {
+		return "PasswordResetToken [id=" + id + ", token=" + token + ", expiryDate=" + expiryDate + ", user=" + user
+				+ "]";
+	}
+
 }

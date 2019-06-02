@@ -117,4 +117,12 @@ public class UserDevice extends DateAudit {
     public void setRefreshActive(Boolean refreshActive) {
         isRefreshActive = refreshActive;
     }
+
+	@Override
+	public String toString() {
+		return "UserDevice [id=" + id + ", user=" + user + ", deviceType=" + deviceType + ", notificationToken="
+				+ notificationToken + ", deviceId=" + deviceId + ", refreshToken=" + refreshToken + ", isRefreshActive="
+				+ isRefreshActive + "]";
+	}
+    
 }

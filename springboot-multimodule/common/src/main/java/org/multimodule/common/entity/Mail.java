@@ -62,4 +62,11 @@ public class Mail {
     public void setModel(Map<String, String> model) {
         this.model = model;
     }
+
+	@Override
+	public String toString() {
+		return "Mail [from=" + from + ", to=" + to + ", subject=" + subject + ", content=" + content + ", model="
+				+ model + "]";
+	}
+    
 }
