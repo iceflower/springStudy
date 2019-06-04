@@ -8,19 +8,15 @@ import org.multimodule.api.security.JwtTokenProvider;
 import org.multimodule.common.entity.CustomUserDetails;
 import org.multimodule.common.entity.PasswordResetToken;
 import org.multimodule.common.entity.User;
-import org.multimodule.common.entity.UserDevice;
 import org.multimodule.common.entity.payload.LoginRequest;
 import org.multimodule.common.entity.payload.PasswordResetLinkRequest;
 import org.multimodule.common.entity.payload.PasswordResetRequest;
 import org.multimodule.common.entity.payload.RegistrationRequest;
-import org.multimodule.common.entity.payload.TokenRefreshRequest;
 import org.multimodule.common.entity.payload.UpdatePasswordRequest;
 import org.multimodule.common.entity.token.EmailVerificationToken;
-import org.multimodule.common.entity.token.RefreshToken;
 import org.multimodule.common.exception.PasswordResetLinkException;
 import org.multimodule.common.exception.ResourceAlreadyInUseException;
 import org.multimodule.common.exception.ResourceNotFoundException;
-import org.multimodule.common.exception.TokenRefreshException;
 import org.multimodule.common.exception.UpdatePasswordException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -29,10 +25,12 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import reactor.core.publisher.Mono;
+
 @Service
 public class AuthService {
 
-    private static final Logger logger = Logger.getLogger(AuthService.class);
+	private static final Logger logger = Logger.getLogger(AuthService.class);
     private final UserService userService;
     private final JwtTokenProvider tokenProvider;
     private final RefreshTokenService refreshTokenService;
@@ -61,13 +59,13 @@ public class AuthService {
      */
     public Optional<User> registerUser(RegistrationRequest newRegistrationRequest) {
         String newRegistrationRequestEmail = newRegistrationRequest.getEmail();
-        if (emailAlreadyExists(newRegistrationRequestEmail)) {
+        if (emailAlreadyExists(newRegistrationRequestEmail).block()) {
             logger.error("Email already exists: " + newRegistrationRequestEmail);
             throw new ResourceAlreadyInUseException("Email", "Address", newRegistrationRequestEmail);
         }
         logger.info("Trying to register new user [" + newRegistrationRequestEmail + "]");
-        User newUser = userService.createUser(newRegistrationRequest);
-        User registeredNewUser = userService.save(newUser);
+        User newUser = userService.createUser(newRegistrationRequest).block();
+        User registeredNewUser = userService.save(newUser).block();
         return Optional.ofNullable(registeredNewUser);
     }
 
@@ -76,7 +74,7 @@ public class AuthService {
      *
      * @return true if the email exists else false
      */
-    public Boolean emailAlreadyExists(String email) {
+    public Mono<Boolean> emailAlreadyExists(String email) {
         return userService.existsByEmail(email);
     }
 
@@ -85,7 +83,7 @@ public class AuthService {
      *
      * @return true if the email exists else false
      */
-    public Boolean usernameAlreadyExists(String username) {
+    public Mono<Boolean> usernameAlreadyExists(String username) {
         return userService.existsByUsername(username);
     }
 
@@ -149,6 +147,7 @@ public class AuthService {
                                          UpdatePasswordRequest updatePasswordRequest) {
         String email = customUserDetails.getEmail();
         User currentUser = userService.findByEmail(email)
+        		.block()
                 .orElseThrow(() -> new UpdatePasswordException(email, "No matching user found"));
 
         if (!currentPasswordMatches(currentUser, updatePasswordRequest.getOldPassword())) {
@@ -175,49 +174,6 @@ public class AuthService {
         return tokenProvider.generateTokenFromUserId(userId);
     }
 
-    /**
-     * Creates and persists the refresh token for the user device. If device exists
-     * already, we don't care. Unused devices with expired tokens should be cleaned
-     * with a cron job. The generated token would be encapsulated within the jwt.
-     * Remove the existing refresh token as the old one should not remain valid.
-     */
-    public Optional<RefreshToken> createAndPersistRefreshTokenForDevice(Authentication authentication, LoginRequest loginRequest) {
-        User currentUser = (User) authentication.getPrincipal();
-        userDeviceService.findByUserId(currentUser.getId())
-                .map(UserDevice::getRefreshToken)
-                .map(RefreshToken::getId)
-                .ifPresent(refreshTokenService::deleteById);
-
-        UserDevice userDevice = userDeviceService.createUserDevice(loginRequest.getDeviceInfo());
-        RefreshToken refreshToken = refreshTokenService.createRefreshToken();
-        userDevice.setUser(currentUser);
-        userDevice.setRefreshToken(refreshToken);
-        refreshToken.setUserDevice(userDevice);
-        refreshToken = refreshTokenService.save(refreshToken);
-        return Optional.ofNullable(refreshToken);
-    }
-
-    /**
-     * Refresh the expired jwt token using a refresh token and device info. The
-     * * refresh token is mapped to a specific device and if it is unexpired, can help
-     * * generate a new jwt. If the refresh token is inactive for a device or it is expired,
-     * * throw appropriate errors.
-     */
-    public Optional<String> refreshJwtToken(TokenRefreshRequest tokenRefreshRequest) {
-        String requestRefreshToken = tokenRefreshRequest.getRefreshToken();
-
-        return Optional.of(refreshTokenService.findByToken(requestRefreshToken)
-                .map(refreshToken -> {
-                    refreshTokenService.verifyExpiration(refreshToken);
-                    userDeviceService.verifyRefreshAvailability(refreshToken);
-                    refreshTokenService.increaseCount(refreshToken);
-                    return refreshToken;
-                })
-                .map(RefreshToken::getUserDevice)
-                .map(UserDevice::getUser)
-                .map(User::getId).map(this::generateTokenFromUserId))
-                .orElseThrow(() -> new TokenRefreshException(requestRefreshToken, "Missing refresh token in database.Please login again"));
-    }
 
     /**
      * Generates a password reset token from the given reset request
@@ -225,6 +181,7 @@ public class AuthService {
     public Optional<PasswordResetToken> generatePasswordResetToken(PasswordResetLinkRequest passwordResetLinkRequest) {
         String email = passwordResetLinkRequest.getEmail();
         return userService.findByEmail(email)
+        		.block()
                 .map(user -> {
                     PasswordResetToken passwordResetToken = passwordResetTokenService.createToken();
                     passwordResetToken.setUser(user);

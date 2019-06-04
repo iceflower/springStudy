@@ -32,8 +32,8 @@ public class JwtTokenProvider {
     private String jwtClaimRefreshName;
 
     /**
-     * principal object 에서 토큰을 생성 후, JWT에 새로 고친 토큰을 삽입함
-     * 즉, 새로운 JWT를 만들 수 있게 함.
+     * Generates a token from a principal object. Embed the refresh token in the jwt
+     * so that a new jwt can be created
      */
     public String generateToken(CustomUserDetails customUserDetails) {
         Instant expiryDate = Instant.now().plusMillis(jwtExpirationInMs);
@@ -46,8 +46,8 @@ public class JwtTokenProvider {
     }
 
     /**
-     * principal object 에서 토큰을 생성 후, JWT에 새로 고친 토큰을 삽입함
-     * 즉, 새로운 JWT를 만들 수 있게 함.
+     * Generates a token from a principal object. Embed the refresh token in the jwt
+     * so that a new jwt can be created
      */
     public String generateTokenFromUserId(Long userId) {
         Instant expiryDate = Instant.now().plusMillis(jwtExpirationInMs);
@@ -61,7 +61,7 @@ public class JwtTokenProvider {
 
 
     /**
-     * 토큰에 캡슐화된 사용자 ID를 반환함
+     * Returns the user id encapsulated within the token
      */
     public Long getUserIdFromJWT(String token) {
         Claims claims = Jwts.parser()
@@ -73,7 +73,7 @@ public class JwtTokenProvider {
     }
 
     /**
-     * 토큰의 유효성을 체크함. (서명 유효성, 토큰 유효기간 만료여부, 토큰 지원 여부)
+     * Validates if a token has the correct unmalformed signature and is not expired or unsupported.
      */
     public boolean validateToken(String authToken) {
         try {
@@ -81,19 +81,19 @@ public class JwtTokenProvider {
             return true;
         } catch (SignatureException ex) {
             logger.error("Invalid JWT signature");
-            throw new InvalidTokenRequestException("JWT", authToken, "올바르지 않은 JWT 서명입니다.");
+            throw new InvalidTokenRequestException("JWT", authToken, "Incorrect signature");
         } catch (MalformedJwtException ex) {
             logger.error("Invalid JWT token");
-            throw new InvalidTokenRequestException("JWT", authToken, "잘못된 형태의 JWT 토큰입니다.");
+            throw new InvalidTokenRequestException("JWT", authToken, "Malformed jwt token");
         } catch (ExpiredJwtException ex) {
             logger.error("Expired JWT token");
-            throw new InvalidTokenRequestException("JWT", authToken, "토큰이 만료되었습니다. 새로고침이 필요합니다.");
+            throw new InvalidTokenRequestException("JWT", authToken, "Token expired. Refresh required.");
         } catch (UnsupportedJwtException ex) {
             logger.error("Unsupported JWT token");
-            throw new InvalidTokenRequestException("JWT", authToken, "지원하지 않은 JWT 토큰입니다.");
+            throw new InvalidTokenRequestException("JWT", authToken, "Unsupported JWT token");
         } catch (IllegalArgumentException ex) {
             logger.error("JWT claims string is empty.");
-            throw new InvalidTokenRequestException("JWT", authToken, "잘못된 argument token");
+            throw new InvalidTokenRequestException("JWT", authToken, "Illegal argument token");
         }
     }
 

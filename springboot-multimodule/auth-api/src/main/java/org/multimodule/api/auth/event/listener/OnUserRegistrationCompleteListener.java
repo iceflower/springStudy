@@ -49,7 +49,7 @@ public class OnUserRegistrationCompleteListener implements ApplicationListener<O
         emailVerificationTokenService.createVerificationToken(user, token);
 
         String recipientAddress = user.getEmail();
-        String emailConfirmationUrl = event.getRedirectUrl().queryParam("token", token).toUriString();
+        String emailConfirmationUrl = event.getRedirectUrl() + "?token="+token;
 
         try {
             mailService.sendEmailVerification(emailConfirmationUrl, recipientAddress);

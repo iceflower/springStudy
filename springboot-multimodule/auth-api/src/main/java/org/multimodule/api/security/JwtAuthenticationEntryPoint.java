@@ -10,7 +10,6 @@ import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.AuthenticationEntryPoint;
 import org.springframework.stereotype.Component;
 
-
 @Component
 public class JwtAuthenticationEntryPoint implements AuthenticationEntryPoint {
 
@@ -19,7 +18,7 @@ public class JwtAuthenticationEntryPoint implements AuthenticationEntryPoint {
     @Override
     public void commence(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse,
                          AuthenticationException ex) throws IOException {
-        logger.error("요청 사용자는 인증되지 않았습니다. 인증 진입점(authentication entry point)에서 라우팅합니다.");
+        logger.error("User is unauthorised. Routing from the entry point");
         httpServletResponse.sendError(HttpServletResponse.SC_UNAUTHORIZED, ex.getMessage());
     }
 }

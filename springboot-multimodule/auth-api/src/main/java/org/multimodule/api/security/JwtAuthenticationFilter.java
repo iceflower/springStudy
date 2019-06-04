@@ -18,6 +18,7 @@ import org.springframework.security.web.authentication.WebAuthenticationDetailsS
 import org.springframework.util.StringUtils;
 import org.springframework.web.filter.OncePerRequestFilter;
 
+
 public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
     private static final Logger log = Logger.getLogger(JwtAuthenticationFilter.class);
@@ -32,7 +33,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
     private CustomUserDetailsService customUserDetailsService;
 
     /**
-     * 서버로 들어오는 요청 헤더를 활용해 인증 필터링을 진행
+     * Filter the incoming request for a valid token in the request header
      */
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response,
@@ -50,14 +51,14 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
                 SecurityContextHolder.getContext().setAuthentication(authentication);
             }
         } catch (Exception ex) {
-            log.error("유저 인증에 실패하였습니다: ", ex);
+            log.error("Failed to set user authentication in security context: ", ex);
         }
 
         filterChain.doFilter(request, response);
     }
 
     /**
-     * 인증 요청 헤더로부터 인증 토큰을 추출함
+     * Extract the token from the Authorization request header
      */
     private String getJwtFromRequest(HttpServletRequest request) {
         String bearerToken = request.getHeader(tokenRequestHeader);
