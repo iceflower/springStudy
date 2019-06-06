@@ -1,17 +1,15 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-	<modelVersion>4.0.0</modelVersion>
-	<parent>
-		<groupId>org.multimodule</groupId>
-		<artifactId>springboot-multimodule</artifactId>
-		<version>0.0.1-SNAPSHOT</version>
-	</parent>
-	<groupId>org.multimodule.api.auth</groupId>
-	<artifactId>auth-api</artifactId>
-	<name>auth-api</name>
-	<description>auth api module project of springboot-multimodule</description>
-	<dependencies>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>org.multimodule</groupId>
+    <artifactId>springboot-multimodule</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+  </parent>
+  <groupId>org.multimodule.api.auth</groupId>
+  <artifactId>auth-api</artifactId>
+  <name>auth-api</name>
+  <description>auth api module project of springboot-multimodule</description>
+  	<dependencies>
 		<dependency>
 			<groupId>org.multimodule.common</groupId>
 			<artifactId>common</artifactId>
@@ -21,41 +19,16 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-freemarker</artifactId>
 		</dependency>
-		<!-- <dependency> <groupId>org.springframework.boot</groupId> <artifactId>spring-boot-starter-webflux</artifactId> 
-			<exclusions> Exclude the netty dependency <exclusion> <groupId>org.springframework.boot</groupId> 
-			<artifactId>spring-boot-starter-reactor-netty</artifactId> </exclusion> </exclusions> 
-			</dependency> -->
-
-		<!-- https://mvnrepository.com/artifact/javax.servlet/javax.servlet-api -->
-		<!-- <dependency> <groupId>javax.servlet</groupId> <artifactId>javax.servlet-api</artifactId> 
-			<version>4.0.1</version> <scope>provided</scope> </dependency> -->
-
-		<!-- https://mvnrepository.com/artifact/org.glassfish.grizzly/grizzly-http-servlet -->
-
-		<!-- https://mvnrepository.com/artifact/jakarta.servlet/jakarta.servlet-api -->
-		<dependency>
-			<groupId>jakarta.servlet</groupId>
-			<artifactId>jakarta.servlet-api</artifactId>
-			<version>4.0.2</version>
-			<scope>provided</scope>
-		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-webflux</artifactId>
+			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
-
-
-
-		<!-- Use tomcat instead -->
-		<!-- <dependency> <groupId>org.springframework.boot</groupId> <artifactId>spring-boot-starter-tomcat</artifactId> 
-			</dependency> -->
-
 		<!-- https://mvnrepository.com/artifact/org.postgresql/postgresql -->
 		<dependency>
-			<groupId>org.postgresql</groupId>
-			<artifactId>postgresql</artifactId>
-			<version>42.2.5</version><!--$NO-MVN-MAN-VER$ -->
-		</dependency>
+		    <groupId>org.postgresql</groupId>
+		    <artifactId>postgresql</artifactId>
+		    <version>42.2.5</version>
+		</dependency>				
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>

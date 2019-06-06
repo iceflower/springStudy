@@ -9,6 +9,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
 public enum RoleName {
 
     ROLE_ADMIN("ROLE_ADMIN", "관리자 회원"),
+
     ROLE_USER("ROLE_USER", "일반 회원");
 	
 	@JsonValue
@@ -23,5 +24,5 @@ public enum RoleName {
 	}
 	public String getTextString() {
 		return textString;
-	}
+	}	
 }
