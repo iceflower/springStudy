@@ -8,8 +8,8 @@
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
 	<groupId>org.multimodule.common</groupId>
-	<artifactId>common</artifactId>
-	<name>common</name>
+	<artifactId>common-module</artifactId>
+	<name>common-module</name>
 	<description>common module project of springboot-multimodule</description>
 	<properties>
 		<maven.test.skip>true</maven.test.skip>

@@ -6,8 +6,8 @@
     <version>0.0.1-SNAPSHOT</version>
   </parent>
   <groupId>org.multimodule.api.auth</groupId>
-  <artifactId>auth-api</artifactId>
-  <name>auth-api</name>
+  <artifactId>auth-api-module</artifactId>
+  <name>auth-api-module</name>
   <description>auth api module project of springboot-multimodule</description>
   	<dependencies>
 		<dependency>
