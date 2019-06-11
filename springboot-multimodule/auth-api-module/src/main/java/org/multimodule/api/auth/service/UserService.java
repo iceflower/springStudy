@@ -42,14 +42,14 @@ public class UserService {
      * Finds a user in the database by username
      */
     public Optional<User> findByUsername(String username) {
-        return userRepository.findByUsername(username);
+        return Optional.of(userRepository.findByUsername(username));
     }
 
     /**
      * Finds a user in the database by email
      */
     public Optional<User> findByEmail(String email) {
-        return userRepository.findByEmail(email);
+        return Optional.of(userRepository.findByEmail(email));
     }
 
     /**

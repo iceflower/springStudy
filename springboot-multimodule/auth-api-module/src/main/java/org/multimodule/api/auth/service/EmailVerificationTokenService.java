@@ -55,7 +55,7 @@ public class EmailVerificationTokenService {
      * Finds an email verification token by the @NaturalId token
      */
     public Optional<EmailVerificationToken> findByToken(String token) {
-        return emailVerificationTokenRepository.findByToken(token);
+        return Optional.of(emailVerificationTokenRepository.findByToken(token));
     }
 
     /**
